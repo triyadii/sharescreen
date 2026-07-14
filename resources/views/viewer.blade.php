@@ -97,10 +97,9 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between overflow-x-hidden">
 
-    <!-- Header -->
     <header class="container mx-auto px-6 py-4 flex justify-between items-center z-10 border-b border-[var(--card-border)] bg-slate-950/10 backdrop-blur-md">
         <div class="flex items-center gap-3">
-            <a href="/" class="h-9 w-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
+            <a href="{{ url('/') }}" class="h-9 w-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
                 <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                 </svg>
@@ -112,26 +111,21 @@
         </div>
         
         <div class="flex items-center gap-3">
-            <!-- Mode badge -->
             <div id="mode-badge" class="px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-[10px] font-bold text-slate-300">
                 Mendeteksi Mode...
             </div>
-            <!-- Network badge -->
             <div id="network-badge" class="px-3 py-1 rounded-full text-[10px] font-bold">
                 Mendeteksi...
             </div>
-            <!-- Status connection badge -->
             <div id="status-badge" class="px-3.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-xs font-semibold text-blue-400 flex items-center gap-1.5">
                 <span class="h-2 w-2 rounded-full bg-blue-500 animate-pulse"></span>
                 Menghubungkan...
             </div>
             
             <button id="theme-toggle" class="p-2.5 rounded-xl theme-toggle-btn cursor-pointer shadow-sm" aria-label="Toggle Theme">
-                <!-- Sun Icon -->
                 <svg id="theme-toggle-sun" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"></path>
                 </svg>
-                <!-- Moon Icon -->
                 <svg id="theme-toggle-moon" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
                 </svg>
@@ -139,17 +133,13 @@
         </div>
     </header>
 
-    <!-- Main View Container -->
     <main class="container mx-auto px-6 py-6 flex-grow flex flex-col items-center justify-center z-10 relative">
         <div id="screen-container" class="w-full max-w-5xl theme-card rounded-3xl shadow-2xl relative overflow-hidden flex items-center justify-center aspect-video group">
             
-            <!-- WebRTC Video Element -->
             <video id="remote-video" autoplay playsinline muted class="w-full h-full object-contain hidden z-10 bg-black"></video>
 
-            <!-- Fallback Image Streaming Element -->
             <img id="fallback-img" class="w-full h-full object-contain hidden z-10" alt="Screen Stream Frame">
 
-            <!-- Shimmer Loading State -->
             <div id="loading-state" class="absolute inset-0 shimmer flex flex-col items-center justify-center gap-4 z-20">
                 <div class="h-12 w-12 rounded-full border-4 border-cyan-500/30 border-t-cyan-500 animate-spin"></div>
                 <div class="text-center">
@@ -158,7 +148,6 @@
                 </div>
             </div>
 
-            <!-- Disconnected State -->
             <div id="error-state" class="absolute inset-0 bg-slate-950/90 hidden flex-col items-center justify-center gap-4 z-20 text-center p-6">
                 <div class="h-16 w-16 rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-500 mb-2">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -167,12 +156,11 @@
                 </div>
                 <h3 class="text-xl font-bold" id="error-title">Room Tidak Aktif</h3>
                 <p class="text-sm text-slate-400 max-w-sm" id="error-message">Sesi screen sharing telah dihentikan oleh host atau room tidak valid.</p>
-                <a href="/" class="mt-4 px-6 py-2.5 bg-slate-800 hover:bg-slate-700 text-white text-sm font-semibold rounded-xl border border-slate-700 transition-all">
+                <a href="{{ url('/') }}" class="mt-4 px-6 py-2.5 bg-slate-800 hover:bg-slate-700 text-white text-sm font-semibold rounded-xl border border-slate-700 transition-all">
                     Kembali ke Beranda
                 </a>
             </div>
 
-            <!-- Controls Overlay (Shows on Hover) -->
             <div class="absolute bottom-4 left-4 right-4 bg-slate-950/80 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/10 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30">
                 <div class="flex items-center gap-3 text-xs text-slate-450">
                     <span id="resolution-indicator" class="font-mono bg-slate-900 px-2 py-1 rounded border border-slate-800 text-slate-300">1080p</span>
@@ -191,12 +179,10 @@
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="container mx-auto px-6 py-6 text-center theme-text-muted text-xs border-t border-[var(--card-border)] z-10 bg-slate-950/5">
         <p>&copy; 2026 ShareScreen. Berbagi layar cepat tanpa internet.</p>
     </footer>
 
-    <!-- Alert Toast -->
     <div id="toast" class="fixed bottom-6 right-6 px-5 py-4 rounded-2xl bg-slate-900 border border-red-500/30 shadow-2xl text-red-200 text-sm font-semibold flex items-center gap-3 translate-y-24 opacity-0 transition-all duration-300 z-50">
         <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -205,6 +191,9 @@
     </div>
 
     <script>
+        // DAFTARKAN BASE URL APLIKASI
+        const APP_URL = "{{ url('') }}";
+
         // ==========================================
         // MANAJEMEN LIGHT & DARK THEME
         // ==========================================
@@ -283,7 +272,8 @@
 
         async function pollRoomStatus() {
             try {
-                const response = await fetch(`/api/rooms/${roomCode}/status`);
+                // MENGGUNAKAN APP_URL
+                const response = await fetch(`${APP_URL}/api/rooms/${roomCode}/status`);
                 const data = await response.json();
 
                 if (!data.success || data.status === 'inactive') {
@@ -420,7 +410,8 @@
 
         async function pollSignals() {
             try {
-                const response = await fetch(`/api/rooms/${roomCode}/signals?recipient_id=${viewerId}&last_signal_id=${lastSignalId}`, {
+                // MENGGUNAKAN APP_URL
+                const response = await fetch(`${APP_URL}/api/rooms/${roomCode}/signals?recipient_id=${viewerId}&last_signal_id=${lastSignalId}`, {
                     headers: { 'Accept': 'application/json' }
                 });
                 const data = await response.json();
@@ -454,7 +445,8 @@
 
         async function sendSignal(type, payload) {
             try {
-                await fetch(`/api/rooms/${roomCode}/signals`, {
+                // MENGGUNAKAN APP_URL
+                await fetch(`${APP_URL}/api/rooms/${roomCode}/signals`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -480,7 +472,8 @@
 
         function updateFrameSrc() {
             const timestamp = Date.now();
-            fallbackImg.src = `/storage/rooms/${roomCode.toUpperCase()}.jpg?t=${timestamp}`;
+            // MENGGUNAKAN APP_URL
+            fallbackImg.src = `${APP_URL}/storage/rooms/${roomCode.toUpperCase()}.jpg?t=${timestamp}`;
         }
 
         fallbackImg.onerror = () => {
