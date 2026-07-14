@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShareScreen - Berbagi Layar Jaringan Lokal</title>
-    <!-- Plus Jakarta Sans Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -89,7 +88,6 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between overflow-x-hidden">
 
-    <!-- Header -->
     <header class="container mx-auto px-6 py-6 flex justify-between items-center z-10">
         <div class="flex items-center gap-3">
             <div class="h-10 w-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
@@ -105,11 +103,9 @@
                 Jaringan Lokal Aktif
             </div>
             <button id="theme-toggle" class="p-2.5 rounded-xl theme-toggle-btn cursor-pointer shadow-sm" aria-label="Toggle Theme">
-                <!-- Sun Icon -->
                 <svg id="theme-toggle-sun" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"></path>
                 </svg>
-                <!-- Moon Icon -->
                 <svg id="theme-toggle-moon" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
                 </svg>
@@ -117,7 +113,6 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="container mx-auto px-6 py-12 flex-grow flex flex-col items-center justify-center z-10">
         <div class="max-w-4xl w-full text-center mb-12">
             <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 leading-tight">
@@ -130,7 +125,6 @@
         </div>
 
         <div class="grid md:grid-cols-2 gap-8 w-full max-w-3xl">
-            <!-- Card 1: Host / Mulai Berbagi -->
             <div class="theme-card p-8 rounded-3xl flex flex-col justify-between hover:border-cyan-500/30 transition-all duration-300 shadow-2xl relative overflow-hidden group">
                 <div class="absolute -right-20 -top-20 w-48 h-48 bg-cyan-500/5 rounded-full blur-3xl group-hover:bg-cyan-500/10 transition-all duration-500"></div>
                 <div>
@@ -152,7 +146,6 @@
                 </button>
             </div>
 
-            <!-- Card 2: Join / Tonton Screen Share -->
             <div class="theme-card p-8 rounded-3xl flex flex-col justify-between hover:border-emerald-500/30 transition-all duration-300 shadow-2xl relative overflow-hidden group">
                 <div class="absolute -right-20 -top-20 w-48 h-48 bg-emerald-500/5 rounded-full blur-3xl group-hover:bg-emerald-500/10 transition-all duration-500"></div>
                 <div>
@@ -167,7 +160,6 @@
                         Masukkan kode room unik yang dibagikan oleh presenter untuk mulai menonton layar secara langsung.
                     </p>
                     
-                    <!-- Input Code -->
                     <div class="mb-6">
                         <input type="text" id="input-room-code" placeholder="MASUKKAN KODE ROOM" maxlength="6" class="w-full py-4 px-5 theme-input rounded-2xl text-center text-xl font-bold tracking-widest placeholder-slate-500 focus:outline-none focus:border-emerald-550/50 focus:ring-1 focus:ring-emerald-500/20 transition-all uppercase">
                     </div>
@@ -181,7 +173,6 @@
             </div>
         </div>
 
-        <!-- Alert Toast -->
         <div id="toast" class="fixed bottom-6 right-6 px-5 py-4 rounded-2xl bg-slate-900 border border-red-500/30 shadow-2xl text-red-200 text-sm font-semibold flex items-center gap-3 translate-y-24 opacity-0 transition-all duration-300 z-50">
             <svg class="w-5 h-5 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -190,12 +181,14 @@
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="container mx-auto px-6 py-8 text-center theme-text-muted text-xs border-t border-[var(--card-border)] z-10">
         <p>&copy; 2026 ShareScreen. Dikembangkan untuk efisiensi jaringan lokal (Wi-Fi/LAN).</p>
     </footer>
 
     <script>
+        // DAFTARKAN BASE URL APLIKASI
+        const APP_URL = "{{ url('') }}";
+
         // ==========================================
         // MANAJEMEN LIGHT & DARK THEME
         // ==========================================
@@ -257,7 +250,8 @@
             `;
 
             try {
-                const response = await fetch('/api/rooms', {
+                // MENGGUNAKAN APP_URL
+                const response = await fetch(`${APP_URL}/api/rooms`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -268,7 +262,8 @@
                 const data = await response.json();
                 if (data.success) {
                     localStorage.setItem(`host_id_${data.code}`, data.host_id);
-                    window.location.href = `/host/${data.code}`;
+                    // MENGGUNAKAN APP_URL
+                    window.location.href = `${APP_URL}/host/${data.code}`;
                 } else {
                     showToast('Gagal membuat room. Silakan coba lagi.');
                     resetCreateButton();
@@ -307,7 +302,8 @@
             `;
 
             try {
-                const response = await fetch(`/api/rooms/join/${code}`, {
+                // MENGGUNAKAN APP_URL
+                const response = await fetch(`${APP_URL}/api/rooms/join/${code}`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -317,7 +313,8 @@
 
                 const data = await response.json();
                 if (response.ok && data.success) {
-                    window.location.href = `/join/${code}`;
+                    // MENGGUNAKAN APP_URL
+                    window.location.href = `${APP_URL}/join/${code}`;
                 } else {
                     showToast(data.message || 'Room tidak valid atau sudah mati.');
                     resetJoinButton();
