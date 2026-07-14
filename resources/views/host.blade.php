@@ -217,63 +217,7 @@
         <p>&copy; 2026 ShareScreen. Pastikan Anda tetap berada di halaman ini selama berbagi layar.</p>
     </footer>
 
-    <!-- Share Source Modal -->
-    <div id="share-source-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm hidden opacity-0 transition-all duration-300">
-        <div class="theme-card max-w-md w-full rounded-3xl p-6 shadow-2xl transform scale-95 transition-all duration-300 flex flex-col gap-5">
-            <div class="flex justify-between items-center">
-                <h3 class="text-base font-bold text-[var(--text-color)]">Pilih Sumber Berbagi</h3>
-                <button id="btn-close-modal" class="p-1.5 rounded-xl hover:bg-slate-800/50 theme-text-muted hover:text-[var(--text-color)] transition-all cursor-pointer">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-            </div>
-            
-            <p class="text-[11px] theme-text-muted">Pilih apa yang ingin Anda bagikan dari perangkat ini.</p>
 
-            <div class="flex flex-col gap-2.5">
-                <!-- Option 1: Screen Share -->
-                <button id="opt-share-screen" class="w-full text-left p-3.5 rounded-2xl border border-[var(--input-border)] hover:border-cyan-500/50 bg-[var(--input-bg)] hover:bg-cyan-500/5 transition-all flex items-center gap-3.5 cursor-pointer group">
-                    <div class="h-9 w-9 rounded-xl bg-cyan-500/10 text-cyan-500 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <span class="font-bold text-xs block text-[var(--text-color)]">Bagikan Layar Utama (Screen)</span>
-                        <span class="text-[10px] theme-text-muted block mt-0.5">Sangat direkomendasikan untuk PC/Laptop.</span>
-                    </div>
-                </button>
-
-                <!-- Option 2: Rear Camera -->
-                <button id="opt-share-camera-back" class="w-full text-left p-3.5 rounded-2xl border border-[var(--input-border)] hover:border-emerald-500/50 bg-[var(--input-bg)] hover:bg-emerald-500/5 transition-all flex items-center gap-3.5 cursor-pointer group">
-                    <div class="h-9 w-9 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <span class="font-bold text-xs block text-[var(--text-color)]">Kamera Belakang (Rear Camera)</span>
-                        <span class="text-[10px] theme-text-muted block mt-0.5">Bagus untuk berbagi lingkungan dari HP.</span>
-                    </div>
-                </button>
-
-                <!-- Option 3: Front Camera -->
-                <button id="opt-share-camera-front" class="w-full text-left p-3.5 rounded-2xl border border-[var(--input-border)] hover:border-blue-500/50 bg-[var(--input-bg)] hover:bg-blue-500/5 transition-all flex items-center gap-3.5 cursor-pointer group">
-                    <div class="h-9 w-9 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www/w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <span class="font-bold text-xs block text-[var(--text-color)]">Kamera Depan (Selfie Camera)</span>
-                        <span class="text-[10px] theme-text-muted block mt-0.5">Bagikan wajah Anda dari HP atau web-cam PC.</span>
-                    </div>
-                </button>
-            </div>
-        </div>
-    </div>
 
     <!-- Alert Toast -->
     <div id="toast" class="fixed bottom-6 right-6 px-5 py-4 rounded-2xl bg-slate-900 border border-red-500/30 shadow-2xl text-red-200 text-sm font-semibold flex items-center gap-3 translate-y-24 opacity-0 transition-all duration-300 z-50">
@@ -416,99 +360,25 @@
             }, 4000);
         }
 
-        const shareSourceModal = document.getElementById('share-source-modal');
-        const btnCloseModal = document.getElementById('btn-close-modal');
-        const optShareScreen = document.getElementById('opt-share-screen');
-        const optShareCameraBack = document.getElementById('opt-share-camera-back');
-        const optShareCameraFront = document.getElementById('opt-share-camera-front');
-
-        function openShareSourceModal() {
-            shareSourceModal.classList.remove('hidden');
-            setTimeout(() => {
-                shareSourceModal.classList.remove('opacity-0');
-                shareSourceModal.firstElementChild.classList.remove('scale-95');
-            }, 10);
-        }
-
-        function closeShareSourceModal() {
-            shareSourceModal.classList.add('opacity-0');
-            shareSourceModal.firstElementChild.classList.add('scale-95');
-            setTimeout(() => {
-                shareSourceModal.classList.add('hidden');
-            }, 300);
-        }
-
-        btnStartShare.addEventListener('click', openShareSourceModal);
+        btnStartShare.addEventListener('click', startScreenShare);
         btnStopShare.addEventListener('click', stopScreenShare);
-        btnCloseModal.addEventListener('click', closeShareSourceModal);
-        
-        shareSourceModal.addEventListener('click', (e) => {
-            if (e.target === shareSourceModal) {
-                closeShareSourceModal();
-            }
-        });
 
-        optShareScreen.addEventListener('click', () => {
-            closeShareSourceModal();
-            startMediaShare('screen');
-        });
-
-        optShareCameraBack.addEventListener('click', () => {
-            closeShareSourceModal();
-            startMediaShare('camera-back');
-        });
-
-        optShareCameraFront.addEventListener('click', () => {
-            closeShareSourceModal();
-            startMediaShare('camera-front');
-        });
-
-        async function startMediaShare(type) {
+        async function startScreenShare() {
             try {
-                if (type === 'screen') {
-                    if (!navigator.mediaDevices || !navigator.mediaDevices.getDisplayMedia) {
-                        showToast("Berbagi Layar tidak didukung pada browser HP Anda. Silakan pilih 'Kamera Belakang' atau 'Kamera Depan'.");
-                        return;
-                    }
-                    localStream = await navigator.mediaDevices.getDisplayMedia({
-                        video: {
-                            cursor: "always",
-                            displaySurface: "monitor"
-                        },
-                        audio: false
-                    });
-                } else if (type === 'camera-back') {
-                    localStream = await navigator.mediaDevices.getUserMedia({
-                        video: {
-                            facingMode: "environment",
-                            width: { ideal: 1280 },
-                            height: { ideal: 720 }
-                        },
-                        audio: false
-                    });
-                } else if (type === 'camera-front') {
-                    localStream = await navigator.mediaDevices.getUserMedia({
-                        video: {
-                            facingMode: "user",
-                            width: { ideal: 1280 },
-                            height: { ideal: 720 }
-                        },
-                        audio: false
-                    });
-                }
+                localStream = await navigator.mediaDevices.getDisplayMedia({
+                    video: {
+                        cursor: "always",
+                        displaySurface: "monitor"
+                    },
+                    audio: false
+                });
 
                 videoElem.srcObject = localStream;
                 videoElem.classList.remove('hidden');
                 startOverlay.classList.add('hidden');
                 
                 statusBadge.className = "px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-xs font-semibold text-emerald-500 flex items-center gap-1.5";
-                
-                let shareLabel = "Live";
-                if (type === 'screen') shareLabel = "Live (Layar)";
-                else if (type === 'camera-back') shareLabel = "Live (Kamera Belakang)";
-                else if (type === 'camera-front') shareLabel = "Live (Kamera Depan)";
-                
-                statusBadge.innerHTML = `<span class="h-2 w-2 rounded-full bg-emerald-500 animate-ping"></span> ${shareLabel}`;
+                statusBadge.innerHTML = `<span class="h-2 w-2 rounded-full bg-emerald-500 animate-ping"></span> Live`;
 
                 localStream.getVideoTracks()[0].onended = () => {
                     stopScreenShare();
@@ -521,14 +391,8 @@
                 }
 
             } catch (err) {
-                console.error("Gagal menangkap media: ", err);
-                if (err.name === 'NotAllowedError') {
-                    showToast("Izin akses ditolak.");
-                } else if (type === 'screen') {
-                    showToast("Berbagi Layar tidak didukung pada browser HP Anda. Silakan pilih 'Kamera Belakang' atau 'Kamera Depan'.");
-                } else {
-                    showToast("Gagal mengakses media. Pastikan izin kamera diberikan.");
-                }
+                console.error("Gagal menangkap layar: ", err);
+                showToast("Izin screen share ditolak atau gagal. Coba pastikan menggunakan browser modern.");
             }
         }
 
