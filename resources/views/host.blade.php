@@ -91,7 +91,7 @@
     <!-- Header -->
     <header class="container mx-auto px-6 py-4 flex justify-between items-center z-10 border-b border-[var(--card-border)] bg-slate-950/10 backdrop-blur-md">
         <div class="flex items-center gap-3">
-            <a href="/" class="h-9 w-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
+            <a href="{{ url('/') }}" class="h-9 w-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
                 <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                 </svg>
@@ -115,7 +115,7 @@
                 </svg>
             </button>
 
-            <a href="/" class="px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 hover:bg-slate-800 transition-all font-semibold">
+            <a href="{{ url('/') }}" class="px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 hover:bg-slate-800 transition-all font-semibold">
                 Keluar
             </a>
         </div>
@@ -236,6 +236,9 @@
     </div>
 
     <script>
+        // DAFTARKAN BASE URL APLIKASI
+        const APP_URL = "{{ url('') }}";
+
         // ==========================================
         // MANAJEMEN LIGHT & DARK THEME
         // ==========================================
@@ -273,7 +276,7 @@
 
         if (!hostId) {
             alert('Anda tidak memiliki akses sebagai host untuk room ini. Mengarahkan ke halaman menonton...');
-            window.location.href = `/join/${roomCode}`;
+            window.location.href = `${APP_URL}/join/${roomCode}`;
         }
 
         const videoElem = document.getElementById('local-video');
@@ -300,7 +303,7 @@
         let frameUploadInterval = null;
         let isUploadingFrame = false;
 
-        const viewerUrl = `${window.location.origin}/join/${roomCode}`;
+        const viewerUrl = `${APP_URL}/join/${roomCode}`;
 
         function copyTextToClipboard(text) {
             if (navigator.clipboard && window.isSecureContext) {
@@ -431,7 +434,7 @@
             if (activeMode === mode) return;
 
             try {
-                const response = await fetch(`/api/rooms/${roomCode}/mode`, {
+                const response = await fetch(`${APP_URL}/api/rooms/${roomCode}/mode`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -494,7 +497,7 @@
 
         async function pollSignals() {
             try {
-                const response = await fetch(`/api/rooms/${roomCode}/signals?recipient_id=${hostId}&last_signal_id=${lastSignalId}`, {
+                const response = await fetch(`${APP_URL}/api/rooms/${roomCode}/signals?recipient_id=${hostId}&last_signal_id=${lastSignalId}`, {
                     headers: { 'Accept': 'application/json' }
                 });
                 const data = await response.json();
@@ -590,7 +593,7 @@
 
         async function sendSignal(recipientId, type, payload) {
             try {
-                await fetch(`/api/rooms/${roomCode}/signals`, {
+                await fetch(`${APP_URL}/api/rooms/${roomCode}/signals`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -666,7 +669,7 @@
             formData.append('frame', blob, 'frame.jpg');
 
             try {
-                const response = await fetch(`/api/rooms/${roomCode}/frame`, {
+                const response = await fetch(`${APP_URL}/api/rooms/${roomCode}/frame`, {
                     method: 'POST',
                     headers: {
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'
